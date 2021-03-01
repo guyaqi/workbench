@@ -1,5 +1,6 @@
 contract disassembler {
 
+    // Only the pool creator can withdraw.
     function withdraw( bytes32 arg0,uint256 arg1) public return ()
     {
         var2 = arg0;
@@ -23,7 +24,7 @@ contract disassembler {
                 {
                     if (var8) 
                     {
-label_000008B8:
+                                                                 //-> label_000008B8:
                         var9 = (0x4 + var4);
                         var10 = var3;
                         assert((var3 < mapping_0x3[arg0].member_0x4));
@@ -102,7 +103,7 @@ label_000008B8:
                     }
                     else
                     {
-label_0000087A:
+                                                                 //-> label_0000087A:
                         mstore(0x80,SHL(0xE5,0x461BCD));
                         mstore(0x84,0x20);
                         mstore(0xA4,0xF);
@@ -138,6 +139,7 @@ label_0000087A:
         }
     }
 
+    // sload(0xA) output: 
     function FUNC_3EBF8962() public return (var0)
     {
         return(((SHL(0xA0,0x1) - 0x1) & sload(0xA)));
@@ -145,6 +147,8 @@ label_0000087A:
 
     uint256 public getUnlockTime;
 
+    // !!!!!!!!!!!!!!! MARK
+    // 非管理员
     function FUNC_6BFDAECE( uint256 arg0) public return ()
     {
         var10 = (0x4 + temp125);
@@ -172,7 +176,7 @@ label_0000087A:
             temp133 = keccak256(0x0,0x20);
             var21 = 0xA0;
             var20 = temp133;
-label_000015CE:
+                                                                 //-> label_000015CE:
             mstore(var21,((SHL(0xA0,0x1) - 0x1) & sload(var20)));
             var20 = (var20 + 0x1);
             var21 = (0x20 + var21);
@@ -187,7 +191,7 @@ label_000015CE:
         }
         else
         {
-label_000015EC:
+                                                                 //-> label_000015EC:
             var10 = var16;
             temp127 = mload(0x40);
             mstore(0x40,(temp127 + (0x20 + (0x20 * sload(var15)))));
@@ -205,7 +209,7 @@ label_000015EC:
                 var20 = temp129;
                 var22 = var19;
                 var21 = 0x0;
-label_0000162D:
+                                                                 //-> label_0000162D:
                 mstore(var22,((SHL(0x80,0x1) - 0x1) & ((SHL(0x80,0x1) - 0x1) & (sload(var20) / EXP(0x100,var21)))));
                 temp130 = (0x20 + var22);
                 var22 = temp130;
@@ -245,6 +249,7 @@ label_0000162D:
         }
     }
 
+    // ITO 输入函数
     function FUNC_8B4CB0EC( uint256 arg0,uint256 arg1,uint256 arg2,uint256 arg3,uint256 arg4,uint256 arg5) public return (var0)
     {
         var2 = arg0;
@@ -347,7 +352,7 @@ label_0000162D:
                                             temp162 = mload(0x188);
                                             if (((arg5 & (SHL(0x80,0x1) - 0x1)) < temp162)) 
                                             {
-label_00001BD6:
+                                                                 //-> label_00001BD6:
                                                 var17 = func_00002914(((SHL(0x80,0x1) - 0x1) & var7),var14);
                                                 var16 = func_00002853(var17,var13);
                                                 var15 = var16;
@@ -362,7 +367,7 @@ label_00001BD6:
                                                         {
                                                             if ((var16 > var15)) 
                                                             {
-label_00001C90:
+                                                                 //-> label_00001C90:
                                                                 var18 = (0x5 + var9);
                                                                 var19 = var6;
                                                                 assert((var6 < mapping_0x3[arg0].member_0x5));
@@ -426,7 +431,7 @@ label_00001C90:
                                                             }
                                                             else
                                                             {
-label_00001C8C:
+                                                                 //-> label_00001C8C:
                                                                 revert(0x0,0x0);
                                                             }
                                                         }
@@ -436,7 +441,7 @@ label_00001C8C:
                                                             var18 = func_00002914(var11,var13);
                                                             var17 = func_00002853(var18,var14);
                                                             var7 = var17;
-label_00001C83:
+                                                                 //-> label_00001C83:
                                                             if ((var16 > var15)) 
                                                             {
                                                                 goto label_00001C90;
@@ -542,11 +547,13 @@ label_00001C83:
         }
     }
 
+    // !!!!!!!!!!!!!!! MARK
+    // 非管理员
     function FUNC_90E8F7C9() public return (var0)
     {
         var2 = 0x0;
         var3 = 0x0;
-label_00001E97:
+                                                                 //-> label_00001E97:
         if ((sload(0x8) < var3)) 
         {
             return(var2);
@@ -564,6 +571,7 @@ label_00001E97:
         }
     }
 
+    // msg.sender == storage[2]
     function FUNC_AE9F7034( uint256 arg0) public return ()
     {
         if ((msg.sender == ((SHL(0xA0,0x1) - 0x1) & sload(0x2)))) 
@@ -581,6 +589,7 @@ label_00001E97:
         }
     }
 
+    // msg.sender == storage[2]
     function FUNC_B1CCC564( uint256 arg0) public return ()
     {
         if ((msg.sender == ((SHL(0xA0,0x1) - 0x1) & sload(0x2)))) 
@@ -598,11 +607,14 @@ label_00001E97:
         }
     }
 
+    // 返回 storage[2]
     function FUNC_BF5C2920() public return (var0)
     {
         return(((SHL(0xA0,0x1) - 0x1) & sload(0x2)));
     }
 
+    // !!!!!!!!!!!!!!! MARK
+    // msg.sender == ((SHL(0xA0,0x1) - 0x1) & mapping_0x3[arg0].member_0x2
     function FUNC_CC0CAB4C( uint256 arg0) public return ()
     {
         var2 = arg0;
@@ -620,7 +632,7 @@ label_00001E97:
             {
                 if (var7) 
                 {
-label_000020FC:
+                                                                 //-> label_000020FC:
                     if (var6) 
                     {
                         var8 = var4;
@@ -666,7 +678,7 @@ label_000020FC:
                     else
                     {
                         var7 = 0x0;
-label_00002111:
+                                                                 //-> label_00002111:
                         if ((mapping_0x3[arg0].member_0x4 < var7)) 
                         {
                             mstore(0x80,var2);
@@ -685,7 +697,7 @@ label_00002111:
                                 var15 = temp197;
                                 var17 = 0x120;
                                 var16 = 0x0;
-label_0000230A:
+                                                                 //-> label_0000230A:
                                 mstore(var17,((SHL(0x80,0x1) - 0x1) & ((SHL(0x80,0x1) - 0x1) & (sload(var15) / EXP(0x100,var16)))));
                                 temp198 = (0x20 + var17);
                                 var17 = temp198;
@@ -720,15 +732,15 @@ label_0000230A:
                                 mapping_0x3[arg0] = 0x0;
                                 mapping_0x3[arg0].member_0x1 = 0x0;
                                 mapping_0x3[arg0].member_0x2 = ((sload(0x5) & (SHL(0xA0,0x1) - 0x1)) | (~(SHL(0xA0,0x1) - 0x1) & mapping_0x3[arg0].member_0x2));
-label_0000238F:
+                                                                 //-> label_0000238F:
                                 if ((mapping_0x3[arg0].member_0x4 < var7)) 
                                 {
-label_000024D2:
+                                                                 //-> label_000024D2:
                                     return();
                                 }
                                 else
                                 {
-label_0000239C:
+                                                                 //-> label_0000239C:
                                     var9 = (var3 + 0x4);
                                     var8 = (sload(0x5) & (SHL(0xA0,0x1) - 0x1));
                                     var10 = var7;
@@ -877,7 +889,7 @@ label_0000239C:
                 }
                 else
                 {
-label_000020BE:
+                                                                 //-> label_000020BE:
                     mstore(0x80,SHL(0xE5,0x461BCD));
                     mstore(0x84,0x20);
                     mstore(0xA4,0xF);
@@ -904,6 +916,7 @@ label_000020BE:
         }
     }
 
+    // no msg.sender
     function FUNC_D299F55F() public return (var0,var1)
     {
         mstore(0x40,(0x80 + (0x20 + (0x20 * sload(0x8)))));
@@ -918,7 +931,7 @@ label_000020BE:
             temp215 = keccak256(0x0,0x20);
             var8 = 0xA0;
             var7 = temp215;
-label_00002514:
+                                                                 //-> label_00002514:
             mstore(var8,sload(var7));
             temp216 = (0x20 + var8);
             var8 = temp216;
@@ -934,11 +947,12 @@ label_00002514:
         }
         else
         {
-label_00002528:
+                                                                 //-> label_00002528:
             return(var0,var3);
         }
     }
 
+    // msg.sender == storage[2]
     function setUnlockTime( uint256 arg0) public return ()
     {
         if ((msg.sender == ((SHL(0xA0,0x1) - 0x1) & sload(0x2)))) 
@@ -956,6 +970,8 @@ label_00002528:
         }
     }
 
+
+    // msg.sender == storage[2]
     function FUNC_FC369A30( uint256 arg0,uint256 arg1) public return ()
     {
         if ((msg.sender == ((SHL(0xA0,0x1) - 0x1) & sload(0x2)))) 
@@ -1051,15 +1067,20 @@ label_00002528:
         }
     }
 
+
+    //// private
+
+    // return (arg0 >> arg1) & ((1 << arg2) + 1)
     function func_00002621( uint256 arg0,uint256 arg1,uint256 arg2) private return (var0)
     {
         var13 = func_000029E1(0x100,arg0);
-        if (var13) 
+        if (var13) // always true
         {
-            return((SHR(arg1,arg0) & (SHL(arg2,0x1) + ~0x0)));
+            return SHR(arg1,arg0) & (SHL(arg2,0x1) + ~0x0);
         }
         else
         {
+            // "Value out of range UNBOX"
             mstore(0x80,SHL(0xE5,0x461BCD));
             mstore(0x84,0x20);
             mstore(0xA4,0x18);
@@ -1068,9 +1089,10 @@ label_00002528:
         }
     }
 
+    // return arg0*2>arg1 || arg0 == 256
     function func_000029E1( uint256 arg0,uint256 arg1) private return (var0)
     {
-        return(((SHL(arg0,0x1) > arg1) | (arg0 == 0x100)));
+        return (SHL(arg0,0x1) > arg1) | (arg0 == 0x100);
     }
 
     function func_0000277C( uint256 arg0,uint256 arg1) private return (var0)
@@ -1136,7 +1158,7 @@ label_00002528:
         {
             var18 = arg1;
             var20 = (arg1 + (0x20 * arg2));
-label_00002D91:
+                                                                 //-> label_00002D91:
             if ((var18 > var20)) 
             {
                 goto label_00002DC6;
@@ -1152,11 +1174,11 @@ label_00002D91:
         }
         else
         {
-label_00002DC6:
+                                                                 //-> label_00002DC6:
             var17 = 0x1F0B;
             var20 = var19;
             var19 = var17;
-label_00002EA6:
+                                                                 //-> label_00002EA6:
             if ((var20 > var19)) 
             {
                 return(var16);
@@ -1182,10 +1204,10 @@ label_00002EA6:
             var18 = arg1;
             var20 = (arg1 + (0x20 * arg2));
             var21 = 0x0;
-label_00002DFB:
+                                                                 //-> label_00002DFB:
             if ((var18 > var20)) 
             {
-label_00002E45:
+                                                                 //-> label_00002E45:
                 if (var21) 
                 {
                     sstore(var19,(~((SHL(0x80,0x1) - 0x1) * EXP(0x100,var21)) & sload(var19)));
@@ -1215,11 +1237,11 @@ label_00002E45:
         else
         {
             var17 = 0x1F0B;
-label_00002EC4:
+                                                                 //-> label_00002EC4:
             var18 = 0xC98;
             var20 = var19;
             var19 = var18;
-label_00002ECA:
+                                                                 //-> label_00002ECA:
             if ((var20 > var19)) 
             {
                 return(var16);
@@ -1270,7 +1292,7 @@ label_00002ECA:
             if (((var24 / arg0) == arg1)) 
             {
                 var20 = var21;
-label_000027D9:
+                                                                 //-> label_000027D9:
                 return(var20);
             }
             else
@@ -1315,7 +1337,7 @@ label_000027D9:
         mstore(0x40,0x80);
         if ((msg.data.length < 0x4)) 
         {
-label_000000FE:
+                                                                 //-> label_000000FE:
             revert(0x0,0x0);
         }
         else
@@ -1332,7 +1354,7 @@ label_000000FE:
                         require(!msg.value);
                         require((0x40 < (msg.data.length - 0x4)));
                         withdraw(msg.data(0x4),msg.data(0x24));
-label_00000133:
+                                                                 //-> label_00000133:
                         stop();
                     }
 
@@ -1420,7 +1442,7 @@ label_00000133:
                     {
                         require(!msg.value);
                         var2 = FUNC_3EBF8962();
-label_0000017D:
+                                                                 //-> label_0000017D:
                         mstore(0x80,(var2 & (SHL(0xA0,0x1) - 0x1)));
                         RETURN(0x80,0x20);
                     }
@@ -1435,7 +1457,7 @@ label_0000017D:
                         {
                             var2 = 0x0;
                             var3 = 0x0;
-label_00000B6E:
+                                                                 //-> label_00000B6E:
                             if ((sload(0x8) < var3)) 
                             {
                                 if ((var2 > 0x0)) 
@@ -1502,7 +1524,7 @@ label_00000B6E:
                                     var6 = func_0000277C(var2,var5);
                                     mapping_0x3[sload((var8 + temp16))].member_0x7[msg.sender] = 0x0;
                                     var2 = var6;
-label_00000BE8:
+                                                                 //-> label_00000BE8:
                                     var3 = (0x1 + var3);
                                     goto label_00000B6E;
                                 }
@@ -1532,7 +1554,7 @@ label_00000BE8:
                 {
                     require(!msg.value);
                     var1 = getUnlockTime();
-label_000001AE:
+                                                                 //-> label_000001AE:
                     mstore(0x80,var1);
                     RETURN(0x80,0x20);
                 }
@@ -1674,12 +1696,12 @@ label_000001AE:
                                                         var15 = func_00002D71((var14 + 0x4),(var7 + 0x20),temp47);
                                                         mapping_0x3[var13].member_0x3 = ((var12 & (SHL(0xA0,0x1) - 0x1)) | (~(SHL(0xA0,0x1) - 0x1) & mapping_0x3[var13].member_0x3));
                                                         var15 = 0x0;
-label_0000104E:
+                                                                 //-> label_0000104E:
                                                         temp50 = mload(var7);
                                                         if ((temp50 < var15)) 
                                                         {
                                                             var15 = 0x0;
-label_0000118B:
+                                                                 //-> label_0000118B:
                                                             temp51 = mload(var8);
                                                             if ((temp51 < var15)) 
                                                             {
@@ -1767,7 +1789,7 @@ label_0000118B:
                                                                         temp94 = (0x20 + (0x20 * var19));
                                                                         temp95 = mload((temp94 + var18));
                                                                         require((var16 == ((SHL(0x80,0x1) - 0x1) & temp95)));
-label_00001260:
+                                                                 //-> label_00001260:
                                                                         goto label_00001349;
                                                                     }
                                                                     else
@@ -1800,7 +1822,7 @@ label_00001260:
                                                                         temp91 = (0x20 + (0x20 * var20));
                                                                         temp92 = mload((temp91 + var19));
                                                                         require(!((var17 * ((SHL(0x80,0x1) - 0x1) & temp92)) == var18));
-label_00001349:
+                                                                 //-> label_00001349:
                                                                         var15 = (0x2 + var15);
                                                                         goto label_0000118B;
                                                                     }
@@ -1818,7 +1840,7 @@ label_00001349:
                                                             temp101 = mload((temp100 + var17));
                                                             if ((((SHL(0xA0,0x1) - 0x1) & temp101) == var16)) 
                                                             {
-label_0000114A:
+                                                                 //-> label_0000114A:
                                                                 mapping_0x3[var13].member_0x5 = (mapping_0x3[var13].member_0x5 + 0x1);
                                                                 mstore(0x0,(var14 + 0x5));
                                                                 temp102 = keccak256(0x0,0x20);
@@ -1980,7 +2002,7 @@ label_0000114A:
                     var12 = (0x20 * temp137);
                     var13 = (0x20 * temp137);
                     var16 = 0x0;
-label_000004A9:
+                                                                 //-> label_000004A9:
                     if ((var13 < var16)) 
                     {
                         temp138 = (var12 + var10);
@@ -1994,7 +2016,7 @@ label_000004A9:
                         var14 = (0x20 + temp138);
                         var15 = (0x20 + var6);
                         var16 = 0x0;
-label_000004E8:
+                                                                 //-> label_000004E8:
                         if ((var13 < var16)) 
                         {
                             temp141 = (var12 + var10);
@@ -2106,7 +2128,7 @@ label_000004E8:
                 var8 = (temp217 + 0x40);
                 var9 = (0x20 + var1);
                 var10 = 0x0;
-label_00000684:
+                                                                 //-> label_00000684:
                 if ((var7 < var10)) 
                 {
                     temp220 = (var6 + var4);
