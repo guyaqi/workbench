@@ -9,8 +9,9 @@ account = {
 w3 = Web3(Web3.HTTPProvider('https://rinkeby.infura.io/v3/8b55e04e99464356a003d3b7032504aa'))
 
 import os
-bin_path = f'{os.path.dirname(__file__)}/hasher.bin'
+# bin_path = f'{os.path.dirname(__file__)}/hasher.bin'
 # bin_path = f'{os.path.dirname(__file__)}/simple.bin'
+bin_path = f'{os.path.dirname(__file__)}/hasher_deploy.bin'
 f = open(bin_path)
 hasher_hex_string = f.read()
 f.close()
@@ -20,10 +21,11 @@ nonce = w3.eth.getTransactionCount(account['address'])
 txn_dict = {
   # 'to': contract_address,
   'value': 0,
-  'gas': 2000000,
+  'gas': 6000000,
   'gasPrice': w3.toWei('1', 'gwei'),
   'nonce': nonce,
-  'chainId': 4 # rinkeby
+  'chainId': 4, # rinkeby
+  'data': hasher_hex_string
 }
 
 signed_txn = w3.eth.account.signTransaction(txn_dict, account['pk'])
