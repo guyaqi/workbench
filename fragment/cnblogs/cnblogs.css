@@ -1,0 +1,9 @@
+@import url("https://files.cnblogs.com/files/blogs/361581/font.css");
+
+#top_nav {
+  display: none;
+}
+
+#home, .cnblogs-markdown code, .cnblogs-post-body code, .cnblogs-markdown .hljs, .cnblogs-post-body .hljs {
+  font-family: FZXS12 !important;
+}
