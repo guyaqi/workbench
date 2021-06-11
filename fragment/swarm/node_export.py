@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 
-import husha_pk_dict as pk_dict_src
-import husha_contract_dict as contract_dict_src
+'''CONFIG START'''
+# import husha_pk_dict as pk_dict_src
+# import husha_contract_dict as contract_dict_src
 # import meng_216_pk_dict as pk_dict_src
 # import meng_216_contract_dict as contract_dict_src
+import tianya_240_pk_dict as pk_dict_src
+import tianya_240_contract_dict as contract_dict_src
 
-pk_map = pk_dict_src.opr_to_pk
-contract_map = contract_dict_src.opr_to_contract
-save_name = 'husha_~800'
+save_name = 'tianya240'
 
+# Query by contract_addr or opr_addr
 # import to_query as to_query
-# query_list = to_query.query_list
 import to_query_by_opr as to_query
 query_list = to_query.query_list
 
@@ -18,8 +19,12 @@ query_list = to_query.query_list
 # use_query_by_opr = False
 use_query_by_opr = True
 
+'''CONFIG END'''
+
 from typing import List
 import xlwt
+pk_map = pk_dict_src.opr_to_pk
+contract_map = contract_dict_src.opr_to_contract
 
 class SwarmNode:
     '''

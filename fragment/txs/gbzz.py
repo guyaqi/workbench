@@ -6,8 +6,8 @@ import time
 
 '''config'''
 # account
-account = '0x73d8d5B63298f005082fBD84EdDD1c11c39F960d'
-private_key = 'f79550430c77c23bfe649eb793031eb88b9a5afa17da9319333e2621cdccd7ab'
+account = '0x2CA43fa2a95794ECce8F9D3FF3a4043092B2EBD1'
+private_key = 'b68a2d25c1f073cbcb54897e272950bf1b089540e6cbe5b76a5bfe3ca92b2fb6'
 # limit
 would_buy_price = 0.21 # buy gbzz when price of gbzz less than the value
 eth_reserve = 1 # reserve eth for fees
@@ -15,7 +15,7 @@ eth_reserve = 1 # reserve eth for fees
 
 '''globals'''
 # provider
-w3 = Web3(Web3.HTTPProvider('https://goerli.infura.io/v3/9e5830e2c56546d6ab6338a6606dfc44'))
+w3 = Web3(Web3.HTTPProvider('http://13.229.114.242:8546'))
 # contract
 broker_address = '0x7C1ed097af300c85f3e9aaf51A15dE5c967f828E'
 gbzz_address = '0x2aC3c1d3e24b45c6C310534Bc2Dd84B5ed576335'
@@ -41,8 +41,10 @@ broker_contract = get_contract(broker_address, broker_abi)
 
 '''init'''
 
-# balance_of_gbzz = gbzz_contract.functions.balanceOf(account).call()
-# print(f'balance: {balance_of_gbzz / 10**16}')
+balance_of_gbzz = gbzz_contract.functions.balanceOf(account).call()
+print(f'balance: {balance_of_gbzz / 10**16}')
+
+exit()
 
 def call_mintTo(buy_amount, value):
   raw_tx = broker_contract.functions.mintTo(
